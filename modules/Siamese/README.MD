@@ -60,4 +60,6 @@ show_loss_plot(COUNTER, LOSS_HISTORY)
 
 ## 结果
 
-损失值图像如下 ![损失值变化趋势](Figure_1.png)
+损失值变化趋势
+
+ ![损失值变化趋势](Figure_1.png)
