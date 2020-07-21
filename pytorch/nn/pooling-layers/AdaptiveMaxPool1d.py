@@ -1,5 +1,8 @@
 import torch
 
+"""
+自适应式最大值池化
+"""
 input = torch.tensor([[[1, 2, 3, 4, 5]]], dtype=torch.float32)
 pool = torch.nn.AdaptiveMaxPool1d(2)
 output = pool(input)
