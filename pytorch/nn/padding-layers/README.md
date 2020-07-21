@@ -47,3 +47,128 @@
     #           [ 2.,  1.,  2.,  3.,  4.,  3.,  2.]]]])
 ~~~
 
+## torch.nn.ReplicationPad1d
+
+一维边界重复填充，复制边界元素填充
+
+主要参数
+
+> **padding** ([*int*](https://docs.python.org/3/library/functions.html#int)*,* [*tuple*](https://docs.python.org/3/library/stdtypes.html#tuple)) : 填充尺寸，若传入int表示两侧填充相等长度，若传入tuple则分别表示(left padding, right padding)。
+
+~~~python
+input = torch.tensor([[[1, 2, 3, 4, 5]]], dtype=torch.float32)
+print(input)
+# tensor([[[1., 2., 3., 4., 5.]]])
+
+m = torch.nn.ReplicationPad1d(2)
+output = m(input)
+print(output)
+# tensor([[[1., 1., 1., 2., 3., 4., 5., 5., 5.]]])
+
+m = torch.nn.ReplicationPad1d((1, 2))
+output = m(input)
+print(output)
+# tensor([[[1., 1., 2., 3., 4., 5., 5., 5.]]])
+~~~
+
+## torch.nn.ReplicationPad2d
+
+二维边界重复填充
+
+主要参数
+
+> **padding** ([*int*](https://docs.python.org/3/library/functions.html#int)*,* [*tuple*](https://docs.python.org/3/library/stdtypes.html#tuple)) : 填充尺寸，若传入int表示两侧填充相等长度，若传入tuple则分别表示(left padding, right padding, top padding, bottom padding)。
+
+~~~python
+input = torch.tensor([[[[1, 2, 3, 4, 5],
+                        [6, 7, 8, 9, 0]]]], dtype=torch.float32)
+print(input)
+# tensor([[[[1., 2., 3., 4., 5.],
+#           [6., 7., 8., 9., 0.]]]])
+
+m = torch.nn.ReplicationPad2d(1)
+output = m(input)
+print(output)
+# tensor([[[[1., 1., 2., 3., 4., 5., 5.],
+#           [1., 1., 2., 3., 4., 5., 5.],
+#           [6., 6., 7., 8., 9., 0., 0.],
+#           [6., 6., 7., 8., 9., 0., 0.]]]])
+
+m = torch.nn.ReplicationPad2d((1, 1, 2, 2))
+output = m(input)
+print(output)
+# tensor([[[[1., 1., 2., 3., 4., 5., 5.],
+#           [1., 1., 2., 3., 4., 5., 5.],
+#           [1., 1., 2., 3., 4., 5., 5.],
+#           [6., 6., 7., 8., 9., 0., 0.],
+#           [6., 6., 7., 8., 9., 0., 0.],
+#           [6., 6., 7., 8., 9., 0., 0.]]]])
+
+~~~
+
+## torch.nn.ReplicationPad3d
+
+三维边界重复填充
+
+主要参数
+
+> **padding** ([*int*](https://docs.python.org/3/library/functions.html#int)*,* [*tuple*](https://docs.python.org/3/library/stdtypes.html#tuple)) : 填充尺寸，若传入int表示两侧填充相等长度，若传入tuple则分别表示(left padding, right padding, top padding, bottom padding, front padding, back padding)。
+
+~~~python
+input = torch.tensor([[[[[1, 2, 3],
+                         [4, 5, 6],
+                         [7, 8, 9]],
+                        [[10, 11, 12],
+                         [13, 14, 15],
+                         [16, 17, 18]],
+                        [[19, 20, 21],
+                         [22, 23, 24],
+                         [25, 26, 27]]]]], dtype=torch.float32)
+print(input)
+# tensor([[[[[ 1.,  2.,  3.],
+#            [ 4.,  5.,  6.],
+#            [ 7.,  8.,  9.]],
+#
+#           [[10., 11., 12.],
+#            [13., 14., 15.],
+#            [16., 17., 18.]],
+#
+#           [[19., 20., 21.],
+#            [22., 23., 24.],
+#            [25., 26., 27.]]]]])
+
+m = torch.nn.ReplicationPad3d(1)
+output = m(input)
+print(output)
+# tensor([[[[[ 1.,  1.,  2.,  3.,  3.],
+#            [ 1.,  1.,  2.,  3.,  3.],
+#            [ 4.,  4.,  5.,  6.,  6.],
+#            [ 7.,  7.,  8.,  9.,  9.],
+#            [ 7.,  7.,  8.,  9.,  9.]],
+#
+#           [[ 1.,  1.,  2.,  3.,  3.],
+#            [ 1.,  1.,  2.,  3.,  3.],
+#            [ 4.,  4.,  5.,  6.,  6.],
+#            [ 7.,  7.,  8.,  9.,  9.],
+#            [ 7.,  7.,  8.,  9.,  9.]],
+#
+#           [[10., 10., 11., 12., 12.],
+#            [10., 10., 11., 12., 12.],
+#            [13., 13., 14., 15., 15.],
+#            [16., 16., 17., 18., 18.],
+#            [16., 16., 17., 18., 18.]],
+#
+#           [[19., 19., 20., 21., 21.],
+#            [19., 19., 20., 21., 21.],
+#            [22., 22., 23., 24., 24.],
+#            [25., 25., 26., 27., 27.],
+#            [25., 25., 26., 27., 27.]],
+#
+#           [[19., 19., 20., 21., 21.],
+#            [19., 19., 20., 21., 21.],
+#            [22., 22., 23., 24., 24.],
+#            [25., 25., 26., 27., 27.],
+#            [25., 25., 26., 27., 27.]]]]])
+
+~~~
+
