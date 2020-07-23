@@ -180,7 +180,7 @@ EPOCHS = 50
 
 # 创建数据集对象SIAMESE_DATASET
 SIAMESE_DATASET = SiameseNetworkDataset(
-    image_folder_dataset=torchvision.datasets.ImageFolder(root="modules/datasets/ORL_Faces/"),
+    image_folder_dataset=torchvision.datasets.ImageFolder(root="./datasets/ORL_Faces/"),
     # 图像数据集文件夹 生成一个图片数组对象
     transform=torchvision.transforms.Compose([
         transforms.Resize((100, 100)),
