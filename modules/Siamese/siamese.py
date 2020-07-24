@@ -192,7 +192,11 @@ SIAMESE_DATASET = SiameseNetworkDataset(
 TRAIN_DATA_LOADER = torch.utils.data.dataloader.DataLoader(dataset=SIAMESE_DATASET,
                                                            shuffle=True,
                                                            batch_size=BATCH_SIZE)
-NET = SiameseNetwork()
+RUN_WITH_CUDA = False
+if RUN_WITH_CUDA:
+    NET = SiameseNetwork().cuda()
+else:
+    NET = SiameseNetwork()
 CRITERION = ContrastiveLoss()
 OPTIMIZER = torch.optim.Adam(NET.parameters(), lr=0.0005)
 COUNTER = []
@@ -201,6 +205,8 @@ ITERATION_NUMBER = 0
 for EPOCH in range(0, EPOCHS):
     for INDEX, DATA in enumerate(TRAIN_DATA_LOADER):
         IMG_0, IMG_1, LABEL = DATA
+        if RUN_WITH_CUDA:
+            IMG_0, IMG_1, LABEL = IMG_0.cuda(), IMG_1.cuda(), LABEL.cuda()
         OPTIMIZER.zero_grad()  # 清除梯度
         OUTPUT_1, OUTPUT_2 = NET(IMG_0, IMG_1)
         LOSS_CONTRASTIVE = CRITERION(OUTPUT_1, OUTPUT_2, LABEL)
