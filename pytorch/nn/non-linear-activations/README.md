@@ -29,3 +29,26 @@ print(output)
 
 ~~~
 
+## torch.nn.Hardshrink
+
+定义
+$$
+HardShrink(x)=\begin{cases}x,&x>\lambda\\x,&x<-\lambda\\0,&other \end{cases}
+$$
+![Hardshrink](Hardshrink.png)
+
+> 参数列表：
+>
+> **lambda**: 默认为0.5
+
+~~~python
+import torch
+
+input = torch.tensor([-2, -1, 0, 1, 2], dtype=torch.float32)
+m = torch.nn.Hardshrink(1)
+output = m(input)
+print(output)
+# tensor([-2.,  0.,  0.,  0.,  2.])
+
+~~~
+
