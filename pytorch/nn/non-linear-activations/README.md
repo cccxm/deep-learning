@@ -79,3 +79,28 @@ print(output)
 
 ~~~
 
+## torch.nn.LeakyReLU
+
+定义
+$$
+LeakyRELU(x)=\begin{cases}x,&x>=0\\negative\_slope\times x,&other\end{cases}
+$$
+![LeakyReLU](LeakyReLU.png)
+
+> 参数列表
+>
+> **negative_slope**: 负值权重控制
+>
+> **inplace**: 是否使用原地算法，默认为False。若选择True表示直接将计算结果覆盖输入，否则将创建新的对象存放输出结果。
+
+~~~python
+import torch
+
+input = torch.tensor([-2, -1, 0, 1, 2], dtype=torch.float32)
+m = torch.nn.LeakyReLU(0.5)
+output = m(input)
+print(output)
+# tensor([-1.0000, -0.5000,  0.0000,  1.0000,  2.0000])
+
+~~~
+
