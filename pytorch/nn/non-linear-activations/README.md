@@ -52,3 +52,30 @@ print(output)
 
 ~~~
 
+## torch.nn.Hardtanh
+
+定义
+$$
+HardTanh(x)=\begin{cases}1 & x>1 \\ -1&x<-1\\x&other\end{cases}
+$$
+![Hardtanh](Hardtanh.png)
+
+> 参数列表：
+>
+> **min_val**: 最小阈值，默认为-1
+>
+> **max_val**: 最大阈值，默认为1
+>
+> **inplace**: 是否使用原地算法，默认为False。若选择True表示直接将计算结果覆盖输入，否则将创建新的对象存放输出结果。
+
+~~~python
+import torch
+
+input = torch.tensor([-2, -1, 0, 1, 2], dtype=torch.float32)
+m = torch.nn.Hardtanh(1)
+output = m(input)
+print(output)
+# tensor([-2.,  0.,  0.,  0.,  2.])
+
+~~~
+
