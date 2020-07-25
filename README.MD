@@ -13,3 +13,5 @@
 [pooling layers-池化层](pytorch/nn/pooling-layers)
 
 [padding layers-填充层](pytorch/nn/padding-layers)
+
+[non-linear activations-非线性激活](pytorch/nn/non-linear-activations)
