@@ -8,7 +8,7 @@
 
 ### torch.tensor - 张量模块
 
-[tensor](pytorch/tensor)
+[tensor - 张量](pytorch/tensor)
 
 ### torch.nn - 神经网络
 
