@@ -6,9 +6,9 @@
 
 ## Pytorch
 
-### torch
+### torch.tensor - 张量模块
 
-[torch](pytorch)
+[tensor](pytorch/tensor)
 
 ### torch.nn - 神经网络
 
