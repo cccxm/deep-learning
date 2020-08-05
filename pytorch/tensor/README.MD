@@ -83,3 +83,23 @@ print(nt)
 # tensor([2., 2.])
 ~~~
 
+## 二、张量的存储
+
+### 2.1 CPU存储
+
+PyTorch会默认将张量存储在CPU中。也可以通过参数指定为CPU存储。
+
+~~~python
+default_tensor = torch.randn(3, 3)
+print(default_tensor.device)
+# cpu
+
+cpu_tensor = torch.tensor([1, 2, 3], dtype=torch.float, device='cpu')
+print(cpu_tensor.device)
+# cpu
+~~~
+
+### 2.2 GPU存储
+
+使用`cude:id`形式指定存储在哪一块GPU上。
+

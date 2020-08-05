@@ -192,7 +192,7 @@ SIAMESE_DATASET = SiameseNetworkDataset(
 TRAIN_DATA_LOADER = torch.utils.data.dataloader.DataLoader(dataset=SIAMESE_DATASET,
                                                            shuffle=True,
                                                            batch_size=BATCH_SIZE)
-RUN_WITH_CUDA = False
+RUN_WITH_CUDA = torch.cuda.is_available()
 if RUN_WITH_CUDA:
     NET = SiameseNetwork().cuda()
 else:
