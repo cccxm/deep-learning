@@ -3,19 +3,16 @@
 # Objective : 展示KEGGprofile库的基本使用方式
 # Created by: chen
 # Created on: 2020/8/5
+options(repos = structure(c(CRAN = "https://mirror.lzu.edu.cn/CRAN/")))
 if (!require(stringr)) {
   install.packages('stringr')
   library(stringr)
 }
 if (!stringr::str_detect(getwd(), '.temp')) {
-  setwd(paste(getwd(), 'R', 'bioc', 'packages', 'keggprofile', '.temp', sep = '/'))
+  setwd(paste(getwd(), 'R', 'bioc', 'packages', '.temp', sep = '/'))
 }
-
-options(repos = structure(c(CRAN = "https://mirror.lzu.edu.cn/CRAN/")))
-
 if (!requireNamespace("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
-
 options(BioC_mirror = "https://mirrors.tuna.tsinghua.edu.cn/bioconductor")
 
 if (!require(KEGGprofile)) {
