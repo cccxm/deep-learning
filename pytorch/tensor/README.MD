@@ -103,3 +103,42 @@ print(cpu_tensor.device)
 
 使用`cude:id`形式指定存储在哪一块GPU上。
 
+~~~python
+gpu_tensor = torch.randn(2, 2, device='cuda:0')
+print(gpu_tensor.device)
+# cuda:0
+~~~
+
+### 2.3 张量转移
+
+张量可以在CPU和GPU之间相互转移
+
+~~~python
+gpu_tensor = torch.randn(2, 2, device='cuda:0')
+
+cpu_tensor = gpu_tensor.cpu()
+print(cpu_tensor.device)
+# cpu
+gpu_tensor = cpu_tensor.cuda(0)
+print(gpu_tensor.device)
+# cuda:0
+~~~
+
+## 三、张量的形状
+
+### 3.1 获取维度信息
+
+~~~Python
+import torch
+t = torch.randn(2,3,4)
+t.ndimension()
+# 3
+~~~
+
+### 3.2 获取元素数量
+
+~~~Python
+t.nelement()
+# 24
+~~~
+

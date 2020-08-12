@@ -11,3 +11,12 @@ print(cpu_tensor.device)
 gpu_tensor = torch.randn(2, 2, device='cuda:0')
 print(gpu_tensor.device)
 # cuda:0
+
+gpu_tensor = torch.randn(2, 2, device='cuda:0')
+
+cpu_tensor = gpu_tensor.cpu()
+print(cpu_tensor.device)
+# cpu
+gpu_tensor = cpu_tensor.cuda(0)
+print(gpu_tensor.device)
+# cuda:0

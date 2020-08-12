@@ -34,6 +34,10 @@
 
 ## R语言
 
+### Learning R
+
+[17 - Making Packages](R/learning-r/c-17)
+
 ### Bioconductor
 
 #### packages
