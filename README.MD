@@ -36,6 +36,8 @@
 
 ### Learning R
 
+[5 - Lists and Data Frames](R/learning-r/c-5)
+
 [17 - Making Packages](R/learning-r/c-17)
 
 ### Bioconductor
