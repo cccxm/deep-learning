@@ -12,6 +12,8 @@
 
 [Single SOM(单输入自组织图模型)](modules/single_SOM)
 
+[Batch SOM(批量自组织图模型)](modules/batch_SOM)
+
 
 ## Pytorch
 

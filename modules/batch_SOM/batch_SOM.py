@@ -1,7 +1,7 @@
 # Title     : SOM Demo
 # Objective : show process of SOM algorithm
 # Created by: chen
-# Created on: 2020/9/4
+# Created on: 2020/9/5
 
 import numpy as np
 from numpy import ndarray
@@ -26,6 +26,7 @@ class Model(object):
         :param width: 图的宽度
         :param height: 图的高度
         """
+        self.depth = depth
         self.width = width
         self.height = height
         self.length = width * height
@@ -33,7 +34,8 @@ class Model(object):
         for i in range(len(self.nodes)):
             self.nodes[i].position = np.array([int(i % width), int(i / width)], np.float64)
         self.distance = None
-        self.neighborhood = None
+        self.neighborhood = lambda r, i, c: np.linalg.norm(i - c) <= r
+        self.update = lambda U: np.array([np.mean([u[d] for u in U]) for d in range(depth)], dtype=np.float64)
 
     def winner(self, x) -> Node:
         """
@@ -50,20 +52,33 @@ class Model(object):
                 min_d = d
         return centre
 
-    def train(self, x: ndarray, alpha: float, radius: float):
+    def train(self, X: list, radius: float):
         """
         单个输入训练
-        :param x:
+        :param X: list of ndarray
         :param alpha: 学习率
         :param radius: 邻域半径
         :return: is stop
         """
-        # 查找优胜节点
-        centre = self.winner(x)
-        # 利用邻域函数更新全部节点的权值
-        for node in self.nodes:
-            node.weight = node.weight + self.neighborhood(alpha, radius, node.position, centre.position) * (
-                    x - node.weight)
+        # 生成Voronoi集
+        V = [(self.nodes.index(self.winner(x)), x) for x in X]
+        # 生成邻域集
+        N = [[self.nodes.index(node) for node in self.nodes if
+              self.neighborhood(radius, node.position, self.nodes[i].position)]
+             for i in range(self.length)]
+        # 生成并集U
+        U = [union([[v[1] for v in V if v[0] == n] for n in N[i]]) for i in range(self.length)]
+        # 更新m
+        for i in range(self.length):
+            node = self.nodes[i]
+            node.weight = self.update(U[i])
+
+
+def union(data: list) -> list:
+    n = []
+    for d in data:
+        n += d
+    return n
 
 
 def euclidean(v1: ndarray, v2: ndarray) -> float:
@@ -74,18 +89,3 @@ def euclidean(v1: ndarray, v2: ndarray) -> float:
     :return:
     """
     return np.linalg.norm(v1 - v2)
-
-
-def gaussian(alpha: float, radius: float, i: ndarray, c: ndarray) -> float:
-    """
-    邻域函数 - 简化高斯函数
-    :param alpha: 学习率
-    :param c: 获胜中心节点的位置向量
-    :param i: 给定节点的位置向量
-    :param radius: 给定邻域半径
-    :return:
-    """
-    if np.linalg.norm(i - c) <= radius:
-        return alpha
-    else:
-        return 0.0
