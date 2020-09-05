@@ -6,8 +6,11 @@
 
 ## 模型
 
+[Simple Linear Regression(简单线性回归)](modules/SimpleLinearModel)
+
 [Siamese Network(孪生网络)](modules/Siamese)
 
+[Single SOM(单输入自组织图模型)](modules/single_SOM)
 
 
 ## Pytorch
