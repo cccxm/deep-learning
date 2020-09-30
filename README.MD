@@ -6,14 +6,15 @@
 
 ## 模型
 
+[Batch SOM(批量自组织图模型)](modules/batch_SOM)
+
+[Genetic Programing(遗传编程模型)](modules/genetic_programing)
+
 [Simple Linear Regression(简单线性回归)](modules/SimpleLinearModel)
 
 [Siamese Network(孪生网络)](modules/Siamese)
 
 [Single SOM(单输入自组织图模型)](modules/single_SOM)
-
-[Batch SOM(批量自组织图模型)](modules/batch_SOM)
-
 
 ## Pytorch
 

@@ -138,8 +138,9 @@ def fitness(node: ProgramingNode) -> float:
     return 1 - min(100, sum([abs(y - node.execute(x)) for x, y in X])) / 100
 
 
-model = Genetic(100, 0.02, 0.1)
+model = Genetic(100, 0.02, 0.01)
 target = model.search(generator, crossover, mutation, fitness, 1.)
 print(target.__str__())
 # multi:(dev:(minus:plus):minus)
 # dev:(minus:dev:(plus:minus))
+# multi:(minus:dev:(minus:plus))
